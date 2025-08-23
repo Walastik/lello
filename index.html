@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon!</title>
+    <style>
+        /* Import a nice font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        /* Basic setup */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            /* Prevents scrollbars from appearing */
+        }
+
+        /* The main container that centers everything */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            /* Ensures padding doesn't add to the total height/width */
+        }
+
+        /* --- Animation 1: Animated Gradient Background --- */
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        /* Keyframes for the gradient animation */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* --- Animation 2: Floating Image --- */
+        .logo-image {
+            max-width: 250px;
+            /* Adjust the size of your image */
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            /* Makes the image circular, remove if you want a square */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            animation: floatAnimation 6s ease-in-out infinite;
+        }
+
+        /* Keyframes for the floating animation */
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Animation 3: Glowing Text --- */
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 0;
+            animation: glowAnimation 2s ease-in-out infinite alternate;
+        }
+
+        p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        /* Keyframes for the glowing text animation */
+        @keyframes glowAnimation {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6;
+            }
+        }
+
+        /* Making it responsive for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .mascot-image {
+                max-width: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="penny_the_pangolin.jpg" alt="Penny the Pangolin" class="mascot-image">
+
+        <h1>Coming Soon</h1>
+        <p>Our new site is under construction. Stay tuned!</p>
+    </div>
+
+</body>
+
+</html>
