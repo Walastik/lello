@@ -9,7 +9,6 @@
         /* Import a nice font from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
-        /* Basic setup */
         body,
         html {
             height: 100%;
@@ -18,8 +17,7 @@
             color: #ffffff;
             overflow: hidden;
         }
-
-        /* --- CHANGE 1: Reverted to the original sliding gradient animation --- */
+        
         body {
             /* Using a black and purple theme. The extra purple stop makes the loop smoother. */
             background: linear-gradient(-45deg, #581878, #121212, #581878);
@@ -42,7 +40,6 @@
             }
         }
 
-        /* The container for your content (styles are the same) */
         .container {
             display: flex;
             flex-direction: column;
@@ -59,7 +56,6 @@
             width: 100%;
             height: auto;
             border-radius: 50%;
-            /* --- CHANGE 2: Updated the glow from green to a matching purple --- */
             box-shadow: 0 0 25px rgba(200, 102, 245, 0.8);
             margin-bottom: 2rem;
             animation: floatAnimation 6s ease-in-out infinite;
@@ -84,7 +80,6 @@
             font-weight: 600;
             margin: 0;
             animation: glowAnimation 2s ease-in-out infinite alternate;
-            /* Renamed animation */
         }
 
         p {
@@ -94,10 +89,7 @@
             text-shadow: 0 2px 4px #000;
         }
 
-        /* --- CHANGE 3: Updated keyframes with the new purple glow color --- */
         @keyframes glowAnimation {
-
-            /* Renamed to be more generic */
             from {
                 text-shadow: 0 0 10px #fff, 0 0 20px #a742dd, 0 0 30px #a742dd;
             }
