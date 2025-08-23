@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon!</title>
+    <title>Lello - Coming Soon!</title>
     <style>
         /* Import a nice font from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
@@ -15,32 +15,19 @@
             height: 100%;
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            /* --- CHANGE 1: Softer off-white text color for a more natural feel --- */
-            color: #f5f5f5;
+            color: #ffffff;
             overflow: hidden;
-            /* Prevents scrollbars from appearing */
         }
 
-        /* The main container that centers everything */
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* --- CHANGE 2: New animated gradient with earthy, natural colors --- */
+        /* --- CHANGE 1: Reverted to the original sliding gradient animation --- */
         body {
-            background: linear-gradient(-45deg, #b2c2a2, #6b8e23, #d2b48c, #a7c4d4);
+            /* Using a black and purple theme. The extra purple stop makes the loop smoother. */
+            background: linear-gradient(-45deg, #581878, #121212, #581878);
             background-size: 400% 400%;
             animation: gradientAnimation 15s ease infinite;
         }
 
-        /* Keyframes for the gradient animation (this animation remains the same) */
+        /* Keyframes for the gradient animation */
         @keyframes gradientAnimation {
             0% {
                 background-position: 0% 50%;
@@ -55,19 +42,29 @@
             }
         }
 
+        /* The container for your content (styles are the same) */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
         .mascot-image {
             max-width: 250px;
-            /* Adjust this value to your liking */
             width: 100%;
             height: auto;
             border-radius: 50%;
-            /* --- CHANGE 3: The box-shadow color is now a deep, earthy green --- */
-            box-shadow: 0 10px 30px rgba(47, 79, 79, 0.3);
+            /* --- CHANGE 2: Updated the glow from green to a matching purple --- */
+            box-shadow: 0 0 25px rgba(200, 102, 245, 0.8);
             margin-bottom: 2rem;
             animation: floatAnimation 6s ease-in-out infinite;
         }
 
-        /* Keyframes for the floating animation (this animation remains the same) */
         @keyframes floatAnimation {
             0% {
                 transform: translateY(0);
@@ -82,22 +79,33 @@
             }
         }
 
-        /* --- CHANGE 4: The glowing animation has been removed for a calmer feel --- */
         h1 {
             font-size: 3rem;
             font-weight: 600;
             margin: 0;
-            /* We replaced the animation with a simple, soft shadow to help it stand out */
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            animation: glowAnimation 2s ease-in-out infinite alternate;
+            /* Renamed animation */
         }
 
         p {
             font-size: 1.25rem;
             font-weight: 300;
             margin-top: 0.5rem;
+            text-shadow: 0 2px 4px #000;
         }
 
-        /* We no longer need the @keyframes for the glow, so it has been removed */
+        /* --- CHANGE 3: Updated keyframes with the new purple glow color --- */
+        @keyframes glowAnimation {
+
+            /* Renamed to be more generic */
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #a742dd, 0 0 30px #a742dd;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #c866f5, 0 0 40px #c866f5;
+            }
+        }
 
         /* Making it responsive for smaller screens */
         @media (max-width: 600px) {
@@ -113,14 +121,12 @@
 </head>
 
 <body>
-
     <div class="container">
-        <img src="penny_hard_hat_hammer.png" alt="Penny the Pangolin" class="mascot-image">
+        <img src="penny_halloween.png" alt="Logo" class="mascot-image">
 
         <h1>Coming Soon</h1>
         <p>A new box is on the way. Stay tuned!</p>
     </div>
-
 </body>
 
 </html>
