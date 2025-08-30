@@ -1,0 +1,101 @@
+/* ================== LELLO DESIGN SYSTEM VARIABLES ================== */
+/* All design tokens centralized in one place for easy maintenance */
+
+:root {
+  /* === BRAND COLORS === */
+  --lello-orange: #f16e36;
+  --lello-yellow: #f8bc4c;
+  --lello-teal: #08c3b9;
+  --lello-pink: #ea69a3;
+  
+  /* === SEMANTIC COLORS === */
+  --primary: var(--lello-orange);
+  --secondary: var(--lello-teal);
+  --accent: var(--lello-pink);
+  --accent-alt: var(--lello-yellow);
+  
+  /* === NEUTRAL COLORS === */
+  --text-dark: #444444;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  --text-green: #6aab9c;
+  
+  /* === BACKGROUND COLORS === */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --bg-card: #ffffff;
+  
+  /* === GRADIENT COMBINATIONS === */
+  --gradient-brand: linear-gradient(140deg, var(--lello-yellow), var(--lello-teal), var(--lello-pink));
+  --gradient-hero: linear-gradient(135deg, #34b3f1, var(--lello-teal));
+  --gradient-dark: linear-gradient(-45deg, #581878, #121212, #581878);
+  
+  /* === COMING SOON PAGE COLORS === */
+  --purple-primary: #581878;
+  --purple-light: #a742dd;
+  --purple-glow: #c866f5;
+  --dark-bg: #121212;
+  
+  /* === SPACING SCALE === */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 1.5rem;   /* 24px */
+  --space-lg: 2rem;     /* 32px */
+  --space-xl: 2.5rem;   /* 40px */
+  --space-2xl: 3rem;    /* 48px */
+  --space-3xl: 4rem;    /* 64px */
+  
+  /* === TYPOGRAPHY SCALE === */
+  --font-family-primary: 'Nunito', sans-serif;
+  --font-family-display: 'Baloo 2', sans-serif;
+  
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.2rem;
+  --font-size-7xl: 4rem;
+  
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  --line-height-tight: 1.25;
+  --line-height-base: 1.6;
+  --line-height-loose: 1.8;
+  
+  /* === DESIGN EFFECTS === */
+  --border-radius: 15px;
+  --border-radius-sm: 8px;
+  --border-radius-pill: 50px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.15);
+  
+  --shadow-brand: 0 4px 10px rgba(245, 169, 203, 0.3);
+  --shadow-brand-hover: 0 8px 20px rgba(245, 169, 203, 0.5);
+  --shadow-teal: 0 10px 30px rgba(245, 169, 203, 0.4);
+  
+  /* === TRANSITIONS === */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* === BREAKPOINTS (for reference in media queries) === */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  --bp-wide: 1200px;
+  
+  /* === Z-INDEX SCALE === */
+  --z-dropdown: 10;
+  --z-modal: 100;
+  --z-navbar: 1000;
+  --z-tooltip: 10000;
+}

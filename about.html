@@ -4,26 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lello - About</title>
+    <title>Lello - About Us</title>
 
+    <!-- Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Nunito:wght@400;700;900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/light-theme.css">
-    <link rel="stylesheet" href="css/about-light.css">
+    <!-- Organized CSS Structure -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
-
     <header></header>
 
-    <main class="container">
-        <div class="about-content">
-            <section class="about-section">
-                <h2 class="story-tagline">Nurturing Connections in a Fast-Paced World</h2>
-                <p>Have you ever blinked and felt like the little one in your life has grown an inch? One day they're
+    <main>
+        <div class="content-wrapper animate-fade-in">
+            <section class="section text-center mb-3xl">
+                <h2 class="text-secondary font-primary mb-lg">Nurturing Connections in a Fast-Paced World</h2>
+                <p class="mb-lg">Have you ever blinked and felt like the little one in your life has grown an inch? One
+                    day they're
                     telling you all about their favorite dinosaur, and the next, they have a whole new world of friends,
                     hobbies, and big ideas. It's a beautiful thing to watch, but in our busy, fast-paced world, staying
                     deeply connected through it all can be a challenge.</p>
@@ -32,21 +38,21 @@
                     connection.</p>
             </section>
 
-            <div class="solution-reveal">
+            <div class="solution-reveal animate-bounce-in">
                 <h3>Our answer? The Lello Box!</h3>
             </div>
 
-            <section class="about-section">
-                <h2>Inside Every Lello Box</h2>
+            <section class="section mb-3xl">
+                <h2 class="text-center mb-lg">Inside Every Lello Box</h2>
 
-                <div class="feature-cards-container">
-                    <div class="feature-card">
+                <div class="feature-grid stagger-children">
+                    <div class="card card-feature">
                         <h3>A Space to Share</h3>
                         <p>Our thoughtfully designed letter templates and prompts make it easy and fun for children to
                             share what's on their mind. It's a creative way for them to express feelings and create a
                             treasured keepsake.</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="card card-feature">
                         <h3>An Adventure to Enjoy</h3>
                         <p>We also include an engaging, hands-on activity designed to spark curiosity and creativity.
                             These screen-free projects are perfect for helping kids learn, play, and discover something
@@ -55,9 +61,10 @@
                 </div>
             </section>
 
-            <section class="about-section">
-                <h2>Our Mission</h2>
-                <p>At Lello, our mission is simple: to help you build lasting memories and strengthen your relationship
+            <section class="section mb-3xl">
+                <h2 class="text-center mb-lg">Our Mission</h2>
+                <p class="text-center mb-lg">At Lello, our mission is simple: to help you build lasting memories and
+                    strengthen your relationship
                     with the growing child in your life. We are dedicated to creating a world with:</p>
 
                 <ul class="mission-list">
@@ -76,18 +83,17 @@
                 </ul>
             </section>
 
-            <section class="about-section closing-text">
-                <p>Thank you for being here. We can't wait for you to see the magic unfold, one letter at a time.</p>
+            <section class="section text-center">
+                <p class="mb-lg">Thank you for being here. We can't wait for you to see the magic unfold, one letter at
+                    a time.</p>
                 <p class="signature">With warmth and wonder,<br>The Lello Family</p>
             </section>
-
         </div>
     </main>
 
     <footer></footer>
 
     <script src="js/main.js"></script>
-
 </body>
 
 </html>

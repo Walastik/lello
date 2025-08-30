@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lello</title>
+    <title>Lello - Connecting Hearts Through Letters</title>
+
+    <!-- Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Nunito:wght@400;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/light-theme.css">
-    <link rel="stylesheet" href="css/home-light.css">
+
+    <!-- Organized CSS Structure -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -18,16 +26,16 @@
 
     <main>
         <section class="hero">
-            <div class="hero-content">
-                <img src="images/penny_the_pangolin.jpg" alt="Penny the Mascot" class="mascot-image">
+            <div class="hero-content animate-fade-in">
+                <img src="images/penny_the_pangolin.jpg" alt="Penny the Mascot" class="mascot-image animate-float">
                 <h1>Welcome to Lello!</h1>
                 <p>Nurturing connections with the little ones in your life through letters and activities.</p>
-                <a href="about.html" class="btn">Learn More</a>
+                <a href="about.html" class="btn btn-primary">Learn More</a>
             </div>
         </section>
 
-        <section class="intro-section">
-            <div class="intro-content">
+        <section class="section section-center">
+            <div class="content-wrapper-sm animate-fade-in">
                 <h2>What is a Lello Box?</h2>
                 <p>
                     In a world full of screens and busy schedules, Lello helps you slow down and connect. Each Lello Box
@@ -37,26 +45,30 @@
             </div>
         </section>
 
-        <section class="carousel-section">
-            <h2>What Our Friends Are Saying</h2>
-            <div class="carousel-container">
-                <div class="carousel-slide active">
-                    <p class="review-text">"My daughter waits by the door for her Lello Box every month. It's our new
-                        favorite tradition!"</p>
-                    <p class="review-author">- Sarah J.</p>
+        <section class="section section-alt section-center">
+            <div class="content-wrapper-sm">
+                <h2>What Our Friends Are Saying</h2>
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <p class="review-text">"My daughter waits by the door for her Lello Box every month. It's our
+                            new
+                            favorite tradition!"</p>
+                        <p class="review-author">- Sarah J.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <p class="review-text">"As a grandparent who lives far away, Lello has been a priceless gift. I
+                            feel
+                            more connected to my grandson than ever."</p>
+                        <p class="review-author">- David M.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <p class="review-text">"The activities are so creative and fun! We've learned so much together.
+                            Thank you, Lello!"</p>
+                        <p class="review-author">- Emily R.</p>
+                    </div>
                 </div>
-                <div class="carousel-slide">
-                    <p class="review-text">"As a grandparent who lives far away, Lello has been a priceless gift. I feel
-                        more connected to my grandson than ever."</p>
-                    <p class="review-author">- David M.</p>
-                </div>
-                <div class="carousel-slide">
-                    <p class="review-text">"The activities are so creative and fun! We've learned so much together.
-                        Thank you, Lello!"</p>
-                    <p class="review-author">- Emily R.</p>
-                </div>
+                <div class="carousel-dots"></div>
             </div>
-            <div class="carousel-dots"></div>
         </section>
     </main>
 

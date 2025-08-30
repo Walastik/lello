@@ -4,21 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lello - Contact</title>
+    <title>Lello - Contact Us</title>
+
+    <!-- Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Nunito:wght@400;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/light-theme.css">
-    <link rel="stylesheet" href="css/contact-light.css">
+
+    <!-- Organized CSS Structure -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
     <header></header>
 
-    <main class="container">
-        <div class="contact-content">
-            <section class="contact-section">
+    <main>
+        <div class="content-wrapper-sm animate-fade-in">
+            <section class="section text-center mb-3xl">
                 <h2>Get in Touch</h2>
                 <p>Have a question or want to say hello? We'd love to hear from you! The best way to reach us is by
                     filling out our contact form:</p>
@@ -26,13 +34,14 @@
                 <p class="form-note">(This will take you to a Google Form)</p>
             </section>
 
-            <section class="contact-section newsletter-section">
+            <section class="newsletter-section text-center">
                 <h2>Stay in the Loop!</h2>
-                <p>Sign up for our newsletter to get the latest updates, special offers, and a sprinkle of Lello magic
+                <p class="mb-lg">Sign up for our newsletter to get the latest updates, special offers, and a sprinkle of
+                    Lello magic
                     delivered right to your inbox.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn">Subscribe</button>
+                    <input type="email" class="form-input form-input-pill" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
                 </form>
             </section>
         </div>
