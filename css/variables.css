@@ -3,14 +3,16 @@
 
 :root {
   /* === BRAND COLORS === */
-  --lello-orange: #f16e36;
-  --lello-yellow: #f8bc4c;
+  --lello-orange: #E97E37;
+  --lello-yellow: #F4CF4B;
   --lello-teal: #08c3b9;
-  --lello-pink: #ea69a3;
+  --lello-blue: #53A8E3;
+  --lello-pink: #E256A0;
+  --lello-green: #7AC344;
   
   /* === SEMANTIC COLORS === */
   --primary: var(--lello-orange);
-  --secondary: var(--lello-teal);
+  --secondary: var(--lello-blue);
   --accent: var(--lello-pink);
   --accent-alt: var(--lello-yellow);
   

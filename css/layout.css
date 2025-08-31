@@ -201,7 +201,7 @@ footer {
 
 .review-author {
   font-weight: var(--font-weight-bold);
-  color: var(--text-green);
+  color: var(--secondary);
   font-size: var(--font-size-base);
 }
 
