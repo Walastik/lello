@@ -182,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function createRipple(e) {
-      e.preventDefault();
       const button = e.currentTarget;
       const rect = button.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
