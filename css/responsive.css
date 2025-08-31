@@ -169,7 +169,7 @@
 
   .hero {
     padding: 60px 20px;
-    min-height: 90vh;
+    min-height: 100vh;
   }
   
   .hero-content {
@@ -202,7 +202,7 @@
 
   .hero {
     padding: 40px 15px;
-    min-height: 80vh;
+    min-height: 100vh;
   }
   
   .hero-content {
