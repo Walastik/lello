@@ -6,8 +6,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 32px;
-    height: 24px;
+    width: 26px;
+    height: 20px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -27,7 +27,7 @@
   }
 
   .hamburger.active .bar:nth-child(1) {
-    transform: translateY(10.5px) rotate(45deg);
+    transform: translateY(8.5px) rotate(45deg);
     background-color: var(--primary);
   }
 
@@ -37,7 +37,7 @@
   }
 
   .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-10.5px) rotate(-45deg);
+    transform: translateY(-8.5px) rotate(-45deg);
     background-color: var(--primary);
   }
 
@@ -50,16 +50,11 @@
     background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(249,249,249,0.98));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: var(--space-xl);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: calc(var(--z-navbar) - 1);
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   .nav-menu.active {
@@ -68,7 +63,6 @@
   }
 
   .nav-item {
-    margin: 0;
     opacity: 0;
     transform: translateX(50px);
     transition: all 0.3s ease;
@@ -87,35 +81,8 @@
     display: block;
     padding: var(--space-md) var(--space-xl);
     font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
-  }
-
-  .nav-link:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--secondary), var(--accent));
-    transition: left 0.3s ease;
-    z-index: -1;
-    border-radius: var(--border-radius);
-  }
-
-  .nav-link:hover:before {
-    left: 0;
-  }
-
-  .nav-link:hover {
-    color: var(--text-light);
-    transform: translateY(-2px) scale(1.05);
   }
 }
 
