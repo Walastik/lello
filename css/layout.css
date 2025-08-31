@@ -7,9 +7,11 @@ header {
   -webkit-backdrop-filter: none;
   border-bottom: none;
   box-shadow: none;
-  padding: 20px 0;
-  position: sticky;
+  padding: 0;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: var(--z-navbar);
   transition: transform var(--transition-base), opacity var(--transition-base);
 }
@@ -26,7 +28,7 @@ header.hidden {
   box-shadow: var(--shadow);
   padding: 8px 15px;
   max-width: 95%;
-  margin: 0 auto;
+  margin: 20px auto 0;
   border: 1px solid #e5e5e5;
   display: flex;
   justify-content: flex-end;
@@ -112,12 +114,13 @@ footer {
   background: var(--gradient-hero-mesh);
   color: var(--text-light);
   text-align: center;
-  padding: 120px 20px 80px;
+  padding: 80px 20px 80px;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  margin-top: 0;
 }
 
 .hero::before {
@@ -225,7 +228,11 @@ footer {
 .hero p {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-lg);
-  color: var(--text-light);
+  color: var(--text-dark);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* === CONTENT SECTIONS === */
