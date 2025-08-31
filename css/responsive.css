@@ -168,7 +168,24 @@
   }
 
   .hero {
-    padding: 80px 20px 40px;
+    padding: 60px 20px;
+    min-height: 90vh;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .hero-content::before,
+  .hero-content::after {
+    display: none;
+  }
+
+  .hero::after {
+    width: 60px;
+    height: 60px;
+    top: 15%;
+    right: 5%;
   }
 }
 
@@ -184,7 +201,97 @@
   }
 
   .hero {
-    padding: 60px 15px 30px;
+    padding: 40px 15px;
+    min-height: 80vh;
+  }
+  
+  .hero-content {
+    padding: 0.5rem;
+  }
+
+  .hero::after {
+    width: 40px;
+    height: 40px;
+    top: 20%;
+    right: 10%;
+  }
+}
+
+/* === TOUCH-FRIENDLY MOBILE OPTIMIZATIONS === */
+@media (max-width: 768px) {
+  /* Enhanced touch targets */
+  .btn,
+  .nav-link,
+  .dot {
+    min-height: 44px;
+    min-width: 44px;
+    padding: max(var(--space-sm), 12px) max(var(--space-md), 16px);
+  }
+
+  /* Improved button spacing */
+  .btn {
+    margin: var(--space-sm) 0;
+  }
+
+  /* Optimized text sizes for mobile reading */
+  body {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
+  }
+
+  /* Enhanced carousel for touch */
+  .carousel-container {
+    padding: var(--space-md);
+    touch-action: pan-x;
+  }
+
+  .carousel-slide {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  /* Improved dot navigation */
+  .dot {
+    width: 16px;
+    height: 16px;
+    margin: 0 var(--space-sm);
+    border: 2px solid transparent;
+  }
+
+  .dot.active {
+    border-color: var(--secondary);
+  }
+
+  /* Mobile-first hero improvements */
+  .hero {
+    touch-action: pan-y;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  /* Enhanced glassmorphism for mobile */
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-width: 2px;
+  }
+
+  /* Improved section spacing */
+  .section {
+    padding: var(--space-2xl) var(--space-md);
+    scroll-margin-top: 80px;
+  }
+
+  /* Mobile-specific animations */
+  .animate-fade-in {
+    animation-duration: 0.6s;
+  }
+
+  /* Enhanced hover states for touch */
+  .btn:active,
+  .card:active {
+    transform: scale(0.98);
   }
 }
 

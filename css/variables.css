@@ -29,7 +29,17 @@
   
   /* === GRADIENT COMBINATIONS === */
   --gradient-brand: linear-gradient(140deg, var(--lello-yellow), var(--lello-teal), var(--lello-pink));
-  --gradient-hero: linear-gradient(135deg, #34b3f1, var(--lello-teal));
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-hero-mesh: 
+    radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+    radial-gradient(at 40% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 40% 80%, hsla(22,100%,77%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, hsla(242,100%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 40% 0%, hsla(343,100%,76%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(203,100%,65%,1) 0px, transparent 50%);
+  --gradient-hero-animated: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
   --gradient-dark: linear-gradient(-45deg, #581878, #121212, #581878);
   
   /* === COMING SOON PAGE COLORS === */
