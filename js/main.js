@@ -442,8 +442,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { passive: true });
       });
 
-      // Prevent zoom on double tap for specific elements
-      const preventZoomElements = document.querySelectorAll('.btn, .carousel-container');
+      // Prevent zoom on double tap for carousel only (not buttons)
+      const preventZoomElements = document.querySelectorAll('.carousel-container');
       preventZoomElements.forEach(element => {
         element.addEventListener('touchend', (e) => {
           e.preventDefault();
