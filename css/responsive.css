@@ -3,50 +3,134 @@
 /* === MOBILE NAVIGATION === */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: var(--z-navbar);
+    position: relative;
+  }
+
+  .hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+    background-color: var(--primary);
   }
 
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
-  }
-
-  .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: scaleX(0);
   }
 
   .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-10.5px) rotate(-45deg);
+    background-color: var(--primary);
   }
 
   .nav-menu {
     position: fixed;
+    top: 0;
     right: -100%;
-    top: 85px;
-    gap: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(249,249,249,0.98));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    width: 65%;
-    text-align: center;
-    transition: var(--transition-base);
-    padding: var(--space-lg) 0;
-    box-shadow: var(--shadow);
-    border-radius: var(--border-radius);
-    z-index: var(--z-dropdown);
-  }
-
-  .nav-item {
-    margin: var(--space-sm) 0;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: calc(var(--z-navbar) - 1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-menu.active {
-    right: 0%;
+    right: 0;
+    animation: slideInBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  .nav-item {
+    margin: 0;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu.active .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+  .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.2s; }
+  .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.3s; }
 
   .nav-link {
     display: block;
-    padding: var(--space-sm) var(--space-md);
-    font-size: var(--font-size-lg);
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    transition: left 0.3s ease;
+    z-index: -1;
+    border-radius: var(--border-radius);
+  }
+
+  .nav-link:hover:before {
+    left: 0;
+  }
+
+  .nav-link:hover {
+    color: var(--text-light);
+    transform: translateY(-2px) scale(1.05);
+  }
+}
+
+@keyframes slideInBounce {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  70% {
+    right: -5%;
+    opacity: 0.8;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
   }
 }
 
@@ -141,7 +225,38 @@
 @media (max-width: 768px) {
   .feature-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-md);
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .card-feature {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(248, 188, 76, 0.05) 100%);
+    border-left: 4px solid var(--secondary);
+    transform: translateY(0);
+    transition: all var(--transition-base);
+  }
+
+  .card-feature:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(8, 195, 185, 0.15);
+  }
+
+  .card-feature:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .card-feature:hover:before {
+    opacity: 1;
   }
 
   .newsletter-form {
@@ -159,6 +274,26 @@
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .btn:active:before {
+    width: 300px;
+    height: 300px;
   }
 
   .newsletter-section {
@@ -172,6 +307,44 @@
   .review-text {
     font-size: var(--font-size-base);
     padding: 0 var(--space-md);
+  }
+
+  /* Enhanced mission list styling */
+  .mission-list {
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .mission-list li {
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(8, 195, 185, 0.02) 100%);
+    border-left: 4px solid transparent;
+    border-image: linear-gradient(45deg, var(--secondary), var(--accent)) 1;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    transition: all var(--transition-base);
+    cursor: default;
+  }
+
+  .mission-list li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(8, 195, 185, 0.1);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(8, 195, 185, 0.05) 100%);
+  }
+
+  .mission-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .mission-list li:hover:before {
+    opacity: 1;
   }
 }
 
