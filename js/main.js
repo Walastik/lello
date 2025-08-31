@@ -106,16 +106,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Initialize scroll animations ---
   function initScrollAnimations() {
     const scrollElements = document.querySelectorAll('.scroll-reveal');
-    const scrollReveal = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+    const scrollReveal = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
 
     scrollElements.forEach((el) => {
       scrollReveal.observe(el);
@@ -123,17 +126,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Progressive content reveal with staggered timing
     const missionItems = document.querySelectorAll('.mission-list li');
-    const missionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('animate-slide-in-left');
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateX(0)';
-          }, index * 200);
-        }
-      });
-    }, { threshold: 0.3 });
+    const missionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('animate-slide-in-left');
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateX(0)';
+            }, index * 200);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
     missionItems.forEach((item, index) => {
       item.style.opacity = '0';
@@ -144,35 +150,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Feature cards with bounce effect
     const featureCards = document.querySelectorAll('.card-feature');
-    const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('animate-bounce-in');
-            entry.target.style.opacity = '1';
-          }, index * 300);
-        }
-      });
-    }, { threshold: 0.2 });
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('animate-bounce-in');
+              entry.target.style.opacity = '1';
+            }, index * 300);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
     featureCards.forEach((card, index) => {
       card.style.opacity = '0';
       cardObserver.observe(card);
     });
-
-    // Solution reveal with special effect
-    const solutionReveal = document.querySelector('.solution-reveal');
-    if (solutionReveal) {
-      const solutionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-bounce-in', 'animate-pulse');
-          }
-        });
-      }, { threshold: 0.3 });
-      
-      solutionObserver.observe(solutionReveal);
-    }
   }
 
   // --- Interactive enhancements for mobile ---
@@ -181,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initInteractiveElements() {
     // Add ripple effect to buttons
     const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
+    buttons.forEach((btn) => {
       btn.addEventListener('touchstart', createRipple);
       btn.addEventListener('click', createRipple);
     });
@@ -191,8 +186,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const button = e.currentTarget;
       const rect = button.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
-      const x = e.touches ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-      const y = e.touches ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
+      const x = e.touches
+        ? e.touches[0].clientX - rect.left
+        : e.clientX - rect.left;
+      const y = e.touches
+        ? e.touches[0].clientY - rect.top
+        : e.clientY - rect.top;
 
       const ripple = document.createElement('div');
       ripple.style.cssText = `
@@ -209,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
 
       button.appendChild(ripple);
-      
+
       setTimeout(() => {
         ripple.remove();
       }, 600);
@@ -231,14 +230,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const solutionReveal = document.querySelector('.solution-reveal');
     if (solutionReveal) {
       let ticking = false;
-      
+
       function updateParallax() {
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.1; // Reduced intensity
         solutionReveal.style.transform = `translateY(${rate}px)`;
         ticking = false;
       }
-      
+
       window.addEventListener('scroll', () => {
         if (!ticking) {
           requestAnimationFrame(updateParallax);
@@ -249,11 +248,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Touch-friendly card interactions
     const cards = document.querySelectorAll('.card, .mission-list li');
-    cards.forEach(card => {
+    cards.forEach((card) => {
       card.addEventListener('touchstart', () => {
         card.style.transform = 'scale(0.98)';
       });
-      
+
       card.addEventListener('touchend', () => {
         card.style.transform = '';
       });
@@ -261,10 +260,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Simple navbar enhancement without hiding (throttled)
     const navbar = document.querySelector('.navbar');
-    
+
     if (navbar) {
       let navbarTicking = false;
-      
+
       function updateNavbar() {
         const scrolled = window.pageYOffset;
         if (scrolled > 50) {
@@ -274,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         navbarTicking = false;
       }
-      
+
       window.addEventListener('scroll', () => {
         if (!navbarTicking) {
           requestAnimationFrame(updateNavbar);
