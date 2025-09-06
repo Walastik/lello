@@ -610,3 +610,242 @@
     image-rendering: crisp-edges;
   }
 }
+
+/* === NEW HOME PAGE MOBILE RESPONSIVE === */
+
+/* Mobile styles for new sections */
+@media (max-width: 768px) {
+  /* Hero section mobile updates */
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-md);
+    padding: 0 var(--space-md);
+  }
+
+  /* Screen vs Letter Time mobile */
+  .comparison-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .transition-arrow {
+    transform: rotate(90deg);
+    font-size: var(--font-size-3xl);
+  }
+
+  .phone-mockup {
+    width: 160px;
+    height: 280px;
+    margin-bottom: var(--space-md);
+  }
+
+  .letter-paper {
+    width: 160px;
+    height: 200px;
+    padding: var(--space-md);
+  }
+
+  .comparison-text {
+    font-size: var(--font-size-base);
+    margin: var(--space-md) 0;
+  }
+
+  .section-description p {
+    font-size: var(--font-size-lg);
+    padding: 0 var(--space-md);
+  }
+
+  /* Section titles mobile */
+  .section-title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-lg);
+    padding: 0 var(--space-sm);
+  }
+
+  /* Journey steps mobile */
+  .journey-steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .step {
+    padding: var(--space-lg);
+    margin: 0 var(--space-sm);
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .step-text {
+    font-size: var(--font-size-base);
+  }
+
+  /* Learner content mobile */
+  .learner-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .learner-text h2 {
+    text-align: center;
+  }
+
+  .learner-description {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Gift box mobile */
+  .gift-box {
+    width: 150px;
+    height: 150px;
+  }
+
+  .box-opening {
+    padding: var(--space-lg);
+  }
+
+  .sparkle {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Theme showcase mobile */
+  .theme-showcase {
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .theme-preview {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .theme-image {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .theme-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* CTA section mobile */
+  .cta-description {
+    font-size: var(--font-size-base);
+    margin: var(--space-md) 0 var(--space-lg) 0;
+  }
+
+  .cta-button {
+    font-size: var(--font-size-lg);
+    padding: var(--space-md) var(--space-lg);
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  .section-title {
+    font-size: var(--font-size-3xl);
+    padding: 0 var(--space-xs);
+  }
+
+  .step {
+    padding: var(--space-md);
+    margin: 0;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: var(--font-size-xl);
+  }
+
+  .gift-box {
+    width: 120px;
+    height: 120px;
+  }
+
+  .theme-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .theme-image {
+    max-width: 150px;
+  }
+
+  .cta-button {
+    font-size: var(--font-size-base);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  /* Enhanced touch interactions for mobile */
+  .gift-box:active {
+    transform: scale(1.05);
+  }
+
+  .step:active {
+    transform: translateY(-5px);
+  }
+}
+
+/* Smooth scrolling for mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimize animations for mobile performance */
+  .scroll-reveal {
+    transition: all 0.6s ease-out;
+  }
+
+  .gift-box {
+    will-change: transform;
+  }
+
+  .step {
+    will-change: transform;
+  }
+
+  /* Ensure proper spacing between sections on mobile */
+  .section {
+    scroll-margin-top: 80px;
+  }
+
+  /* Mobile-optimized floating animation */
+  @keyframes lid-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-5deg); }
+  }
+
+  @keyframes sparkle-dance {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    50% { transform: translateY(-8px) rotate(90deg); opacity: 1; }
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .gift-box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .section {
+    padding: var(--space-xl) var(--space-md);
+  }
+}
