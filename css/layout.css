@@ -367,50 +367,324 @@ footer {
   color: var(--secondary);
 }
 
-/* Journey Steps - How Does Lello Work */
-.journey-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-xl);
+/* What is Lello Section */
+.lello-description {
   margin-top: var(--space-2xl);
 }
 
-.step {
-  background: var(--bg-card);
-  padding: var(--space-xl);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+.description-content {
+  padding: var(--space-2xl);
   text-align: center;
-  transition: all var(--transition-base);
+  max-width: 800px;
+  margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
-.step:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+.description-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent 40%, 
+    rgba(8, 195, 185, 0.05) 50%, 
+    transparent 60%);
+  animation: gradientAnimation 6s linear infinite;
+  pointer-events: none;
 }
 
-.step-number {
-  display: inline-flex;
+.description-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.main-text {
+  font-size: var(--font-size-xl);
+  color: var(--text-dark);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.description-text {
+  font-size: var(--font-size-lg);
+  color: var(--text-dark);
+  line-height: var(--line-height-loose);
+  margin: var(--space-lg) 0 0 0;
+  font-style: italic;
+}
+
+/* What's Inside Section */
+.whats-inside-content {
+  margin-top: var(--space-2xl);
+}
+
+.box-contents-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-2xl);
+  margin: var(--space-2xl) 0;
+}
+
+/* Flip Card Styles */
+.flip-card {
+  width: 100%;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+/* No hover effects on flip cards - click only */
+
+/* Simple flipped state - no hover effects */
+.flip-card.flipped {
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+/* Keep the flip animation working but prevent hover interference */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+/* Clean flip card visibility */
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-  background: var(--gradient-brand);
-  color: var(--text-light);
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-black);
-  border-radius: 50%;
-  margin-bottom: var(--space-lg);
-  box-shadow: var(--shadow-brand);
+  padding: var(--space-xl);
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.step-text {
-  font-size: var(--font-size-lg);
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Enhanced effects for flipped cards */
+.flip-card.flipped .flip-card-front.glass-card,
+.flip-card.flipped .flip-card-back.glass-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 15px 40px rgba(31, 38, 135, 0.6);
+}
+
+.card-image {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--lello-yellow), var(--lello-orange));
+  border-radius: 50%;
+  margin-bottom: var(--space-lg);
+  box-shadow: 0 15px 30px rgba(248, 188, 76, 0.4);
+  transition: all var(--transition-base);
+}
+
+/* No hover effects on card images */
+
+.flip-card.flipped .card-image {
+  /* transform: scale(1.1); */
+  box-shadow: 0 20px 40px rgba(248, 188, 76, 0.6);
+}
+
+.item-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.card-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary);
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-base);
+}
+
+.flip-card-back .card-title {
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-xl);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  justify-content: center;
+  max-width: 260px;
+}
+
+.card-description {
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  text-align: center;
+  font-weight: var(--font-weight-normal);
+}
+
+/* Ensure smooth transitions for both states */
+.flip-card,
+.flip-card.flipped {
+  transition: all var(--transition-base);
+}
+
+/* Legacy styles for compatibility */
+.content-item-enhanced {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-2xl) var(--space-lg);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius-lg);
+  border: 3px solid rgba(248, 188, 76, 0.2);
+  text-align: center;
+}
+
+.item-icon-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--lello-yellow), var(--lello-orange));
+  border-radius: 50%;
+  margin-bottom: var(--space-md);
+  box-shadow: 0 10px 25px rgba(248, 188, 76, 0.3);
+}
+
+.item-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary);
+  margin: 0 0 var(--space-md) 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.item-description {
+  font-size: var(--font-size-base);
   color: var(--text-dark);
   line-height: var(--line-height-base);
   margin: 0;
+  max-width: 280px;
+}
+
+/* Ready to Get Started Section */
+.ready-content {
+  margin-top: var(--space-2xl);
+}
+
+.ready-text {
+  padding: var(--space-2xl);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.box-contents-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0;
+}
+
+.content-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: var(--border-radius);
+  border: 2px solid rgba(248, 188, 76, 0.3);
+  transition: all var(--transition-base);
+}
+
+.content-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: var(--secondary);
+  box-shadow: 0 10px 25px rgba(248, 188, 76, 0.2);
+}
+
+.item-icon {
+  font-size: 3rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+  animation-delay: var(--stagger-delay, 0s);
+}
+
+.content-item:nth-child(1) .item-icon {
+  --stagger-delay: 0s;
+}
+
+.content-item:nth-child(2) .item-icon {
+  --stagger-delay: 0.5s;
+}
+
+.content-item:nth-child(3) .item-icon {
+  --stagger-delay: 1s;
+}
+
+.content-item p {
+  font-size: var(--font-size-lg);
+  color: var(--text-dark);
   font-weight: var(--font-weight-bold);
+  margin: 0;
+  text-align: center;
+}
+
+.cta-text {
+  font-size: var(--font-size-xl);
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  margin: var(--space-xl) 0 var(--space-lg) 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.closing-text {
+  font-size: var(--font-size-lg);
+  color: var(--text-dark);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  margin: 0;
+  padding: var(--space-md);
+  background: linear-gradient(135deg, rgba(8, 195, 185, 0.1), rgba(248, 188, 76, 0.1));
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--secondary);
 }
 
 /* Lello Learner Section */

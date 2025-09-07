@@ -664,27 +664,97 @@
     padding: 0 var(--space-sm);
   }
 
-  /* Journey steps mobile */
-  .journey-steps {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+  /* What is Lello mobile styles */
+  .lello-description {
     margin-top: var(--space-lg);
   }
 
-  .step {
+  .description-content {
     padding: var(--space-lg);
     margin: 0 var(--space-sm);
   }
 
-  .step-number {
-    width: 60px;
-    height: 60px;
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--space-md);
+  .main-text {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-loose);
   }
 
-  .step-text {
+  .description-text {
     font-size: var(--font-size-base);
+    margin-top: var(--space-md);
+  }
+
+  /* What's Inside mobile styles */
+  .whats-inside-content {
+    margin-top: var(--space-lg);
+  }
+
+  .box-contents-showcase {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .content-item-enhanced {
+    padding: var(--space-lg) var(--space-md);
+    margin: 0 var(--space-sm);
+  }
+
+  .item-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .item-icon {
+    font-size: 2.5rem;
+  }
+
+  .item-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .item-description {
+    font-size: var(--font-size-sm);
+    max-width: 100%;
+  }
+
+  /* Ready to Get Started mobile styles */
+  .ready-content {
+    margin-top: var(--space-lg);
+  }
+
+  .ready-text {
+    padding: var(--space-lg);
+    margin: 0 var(--space-sm);
+  }
+
+  .box-contents-preview {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  .content-item {
+    padding: var(--space-md);
+    margin: 0 var(--space-sm);
+  }
+
+  .content-item p {
+    font-size: var(--font-size-base);
+  }
+
+  .item-icon {
+    font-size: 2.5rem;
+  }
+
+  .cta-text {
+    font-size: var(--font-size-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .closing-text {
+    font-size: var(--font-size-base);
+    padding: var(--space-sm);
   }
 
   /* Learner content mobile */
@@ -758,15 +828,53 @@
     padding: 0 var(--space-xs);
   }
 
-  .step {
+  .description-content {
     padding: var(--space-md);
-    margin: 0;
+    margin: 0 var(--space-xs);
   }
 
-  .step-number {
-    width: 50px;
-    height: 50px;
-    font-size: var(--font-size-xl);
+  .main-text {
+    font-size: var(--font-size-base);
+  }
+
+  .description-text {
+    font-size: var(--font-size-sm);
+  }
+
+  .content-item-enhanced {
+    padding: var(--space-md) var(--space-sm);
+    margin: 0 var(--space-xs);
+  }
+
+  .item-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .item-icon {
+    font-size: 2rem;
+  }
+
+  .item-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .item-description {
+    font-size: var(--font-size-xs);
+  }
+
+  .ready-text {
+    padding: var(--space-md);
+    margin: 0 var(--space-xs);
+  }
+
+  .cta-text {
+    font-size: var(--font-size-base);
+  }
+
+  .closing-text {
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs);
   }
 
   .gift-box {
@@ -792,8 +900,12 @@
     transform: scale(1.05);
   }
 
-  .step:active {
-    transform: translateY(-5px);
+  .description-content:active {
+    transform: scale(1.02);
+  }
+
+  .ready-text:active {
+    transform: scale(1.01);
   }
 }
 
@@ -812,8 +924,13 @@
     will-change: transform;
   }
 
-  .step {
+  .content-item {
     will-change: transform;
+  }
+
+
+  .description-content::before {
+    animation-duration: 8s; /* Slower gradient animation on mobile */
   }
 
   /* Ensure proper spacing between sections on mobile */

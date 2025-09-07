@@ -54,6 +54,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Removed conflicting scroll listener that was causing jittering
 
+  // --- Flip Card Click/Tap Functionality ---
+  function initFlipCards() {
+    const flipCards = document.querySelectorAll('.flip-card');
+    
+    flipCards.forEach(card => {
+      // Add click/tap event listener
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+      
+      // Add keyboard support (Enter and Space keys)
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+      
+      // Make cards focusable for keyboard navigation
+      if (!card.hasAttribute('tabindex')) {
+        card.setAttribute('tabindex', '0');
+      }
+      
+      // Add aria-label for accessibility
+      if (!card.hasAttribute('aria-label')) {
+        card.setAttribute('aria-label', 'Click to flip card and see more details');
+      }
+    });
+  }
+  
+  initFlipCards();
+
   // --- Enhanced Customer Review Carousel with Swipe Support ---
   const initCarousel = () => {
     const slides = document.querySelectorAll('.carousel-slide');
@@ -270,6 +302,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
     scrollElements.forEach((el) => {
       scrollReveal.observe(el);
+    });
+
+    // Modern scroll animation variants
+    const animationClasses = [
+      'scroll-reveal-fade',
+      'scroll-reveal-scale', 
+      'scroll-reveal-slide-left',
+      'scroll-reveal-slide-right',
+      'scroll-reveal-rotate'
+    ];
+
+    animationClasses.forEach(className => {
+      const elements = document.querySelectorAll(`.${className}`);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: '0px 0px -30px 0px',
+        }
+      );
+
+      elements.forEach((el) => {
+        observer.observe(el);
+      });
+    });
+
+    // Staggered children animations
+    const staggeredContainers = document.querySelectorAll('.stagger-children-enhanced');
+    const staggerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    staggeredContainers.forEach((container) => {
+      staggerObserver.observe(container);
     });
 
     // Home page specific animations
