@@ -54,6 +54,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Removed conflicting scroll listener that was causing jittering
 
+  // --- Flip Card Click/Tap Functionality ---
+  function initFlipCards() {
+    const flipCards = document.querySelectorAll('.flip-card');
+    
+    flipCards.forEach(card => {
+      // Add click/tap event listener
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+      
+      // Add keyboard support (Enter and Space keys)
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+      
+      // Make cards focusable for keyboard navigation
+      if (!card.hasAttribute('tabindex')) {
+        card.setAttribute('tabindex', '0');
+      }
+      
+      // Add aria-label for accessibility
+      if (!card.hasAttribute('aria-label')) {
+        card.setAttribute('aria-label', 'Click to flip card and see more details');
+      }
+    });
+  }
+  
+  initFlipCards();
+
   // --- Enhanced Customer Review Carousel with Swipe Support ---
   const initCarousel = () => {
     const slides = document.querySelectorAll('.carousel-slide');
@@ -272,6 +304,56 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollReveal.observe(el);
     });
 
+    // Modern scroll animation variants
+    const animationClasses = [
+      'scroll-reveal-fade',
+      'scroll-reveal-scale', 
+      'scroll-reveal-slide-left',
+      'scroll-reveal-slide-right',
+      'scroll-reveal-rotate'
+    ];
+
+    animationClasses.forEach(className => {
+      const elements = document.querySelectorAll(`.${className}`);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: '0px 0px -30px 0px',
+        }
+      );
+
+      elements.forEach((el) => {
+        observer.observe(el);
+      });
+    });
+
+    // Staggered children animations
+    const staggeredContainers = document.querySelectorAll('.stagger-children-enhanced');
+    const staggerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    staggeredContainers.forEach((container) => {
+      staggerObserver.observe(container);
+    });
+
     // Home page specific animations
     if (window.location.pathname.endsWith('home.html') || 
         window.location.pathname.endsWith('/') ||
@@ -328,6 +410,179 @@ document.addEventListener('DOMContentLoaded', function () {
         carouselContainer.style.transform = 'scale(0.95)';
         carouselContainer.style.transition = 'all 0.6s ease-out';
         carouselObserver.observe(carouselContainer);
+      }
+
+      // New Home Page Specific Animations
+      
+      // Journey steps staggered animation
+      const journeySteps = document.querySelectorAll('.step');
+      const stepObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-bounce-in');
+              }, index * 200);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      journeySteps.forEach((step, index) => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(50px)';
+        step.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        stepObserver.observe(step);
+      });
+
+      // Gift box animation on scroll
+      const giftBox = document.querySelector('.gift-box');
+      if (giftBox) {
+        const giftBoxObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'scale(1) rotate(0deg)';
+                entry.target.classList.add('animate-bounce-in');
+              }
+            });
+          },
+          { threshold: 0.3 }
+        );
+
+        giftBox.style.opacity = '0';
+        giftBox.style.transform = 'scale(0.8) rotate(-5deg)';
+        giftBox.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        giftBoxObserver.observe(giftBox);
+      }
+
+      // Theme showcase animation
+      const themeShowcase = document.querySelector('.theme-showcase');
+      if (themeShowcase) {
+        const themeObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                // Animate the theme image with a slight delay
+                setTimeout(() => {
+                  const themeImage = entry.target.querySelector('.theme-image');
+                  if (themeImage) {
+                    themeImage.style.opacity = '1';
+                    themeImage.style.transform = 'scale(1)';
+                  }
+                }, 300);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        themeShowcase.style.opacity = '0';
+        themeShowcase.style.transform = 'translateY(30px)';
+        themeShowcase.style.transition = 'all 0.8s ease-out';
+        themeObserver.observe(themeShowcase);
+
+        // Initialize theme image animation
+        const themeImage = themeShowcase.querySelector('.theme-image');
+        if (themeImage) {
+          themeImage.style.opacity = '0';
+          themeImage.style.transform = 'scale(0.9)';
+          themeImage.style.transition = 'all 0.6s ease-out';
+        }
+      }
+
+      // Screen vs Letter Time animation
+      const comparisonContainer = document.querySelector('.comparison-container');
+      if (comparisonContainer) {
+        const comparisonObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Animate screen side first
+                const screenSide = entry.target.querySelector('.screen-side');
+                const letterSide = entry.target.querySelector('.letter-side');
+                const arrow = entry.target.querySelector('.transition-arrow');
+                
+                setTimeout(() => {
+                  if (screenSide) {
+                    screenSide.style.opacity = '1';
+                    screenSide.style.transform = 'translateX(0)';
+                  }
+                }, 100);
+                
+                setTimeout(() => {
+                  if (arrow) {
+                    arrow.style.opacity = '1';
+                    arrow.style.transform = 'scale(1)';
+                  }
+                }, 800);
+                
+                setTimeout(() => {
+                  if (letterSide) {
+                    letterSide.style.opacity = '1';
+                    letterSide.style.transform = 'translateX(0)';
+                  }
+                }, 1200);
+              }
+            });
+          },
+          { threshold: 0.3 }
+        );
+
+        // Initialize hidden state
+        const screenSide = comparisonContainer.querySelector('.screen-side');
+        const letterSide = comparisonContainer.querySelector('.letter-side');
+        const arrow = comparisonContainer.querySelector('.transition-arrow');
+        
+        if (screenSide) {
+          screenSide.style.opacity = '0';
+          screenSide.style.transform = 'translateX(-50px)';
+          screenSide.style.transition = 'all 0.8s ease-out';
+        }
+        
+        if (letterSide) {
+          letterSide.style.opacity = '0';
+          letterSide.style.transform = 'translateX(50px)';
+          letterSide.style.transition = 'all 0.8s ease-out';
+        }
+        
+        if (arrow) {
+          arrow.style.opacity = '0';
+          arrow.style.transform = 'scale(0.5)';
+          arrow.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }
+
+        comparisonObserver.observe(comparisonContainer);
+      }
+
+      // CTA button special animation
+      const ctaButton = document.querySelector('.cta-button');
+      if (ctaButton) {
+        const ctaObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'scale(1) translateY(0)';
+                  entry.target.classList.add('animate-pulse');
+                }, 200);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        ctaButton.style.opacity = '0';
+        ctaButton.style.transform = 'scale(0.9) translateY(20px)';
+        ctaButton.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        ctaObserver.observe(ctaButton);
       }
 
       // Parallax effect for hero elements
