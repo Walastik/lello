@@ -167,9 +167,14 @@
     padding: var(--space-2xl) var(--space-md);
   }
 
+  main > *:first-child {
+    padding-top: 80px;
+  }
+
   .hero {
     padding: 60px 20px;
     min-height: 100vh;
+    padding-top: 80px;
   }
   
   .hero-content {
@@ -200,9 +205,14 @@
     padding: var(--space-xl) var(--space-sm);
   }
 
+  main > *:first-child {
+    padding-top: 75px;
+  }
+
   .hero {
     padding: 40px 15px;
     min-height: 100vh;
+    padding-top: 75px;
   }
   
   .hero-content {
@@ -219,7 +229,6 @@
 
 /* === TOUCH-FRIENDLY MOBILE OPTIMIZATIONS === */
 @media (max-width: 768px) {
-  /* Enhanced touch targets */
   .btn,
   .nav-link,
   .dot {
@@ -228,18 +237,15 @@
     padding: max(var(--space-sm), 12px) max(var(--space-md), 16px);
   }
 
-  /* Improved button spacing */
   .btn {
     margin: var(--space-sm) 0;
   }
 
-  /* Optimized text sizes for mobile reading */
   body {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-loose);
   }
-
-  /* Enhanced carousel for touch */
+  
   .carousel-container {
     padding: var(--space-md);
     touch-action: pan-x;
@@ -613,16 +619,13 @@
 
 /* === NEW HOME PAGE MOBILE RESPONSIVE === */
 
-/* Mobile styles for new sections */
 @media (max-width: 768px) {
-  /* Hero section mobile updates */
   .hero-subtitle {
     font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
     padding: 0 var(--space-md);
   }
 
-  /* Screen vs Letter Time mobile */
   .comparison-container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
@@ -657,14 +660,12 @@
     padding: 0 var(--space-md);
   }
 
-  /* Section titles mobile */
   .section-title {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--space-lg);
     padding: 0 var(--space-sm);
   }
 
-  /* What is Lello mobile styles */
   .lello-description {
     margin-top: var(--space-lg);
   }
@@ -718,7 +719,6 @@
     max-width: 100%;
   }
 
-  /* Ready to Get Started mobile styles */
   .ready-content {
     margin-top: var(--space-lg);
   }
@@ -895,7 +895,6 @@
     padding: var(--space-sm) var(--space-md);
   }
 
-  /* Enhanced touch interactions for mobile */
   .gift-box:active {
     transform: scale(1.05);
   }
@@ -915,7 +914,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Optimize animations for mobile performance */
   .scroll-reveal {
     transition: all 0.6s ease-out;
   }
@@ -930,15 +928,13 @@
 
 
   .description-content::before {
-    animation-duration: 8s; /* Slower gradient animation on mobile */
+    animation-duration: 8s;
   }
 
-  /* Ensure proper spacing between sections on mobile */
   .section {
     scroll-margin-top: 80px;
   }
 
-  /* Mobile-optimized floating animation */
   @keyframes lid-float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-10px) rotate(-5deg); }
@@ -950,7 +946,6 @@
   }
 }
 
-/* Landscape orientation adjustments */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero {
     min-height: 100vh;

@@ -38,8 +38,7 @@ const loadHeaderFooter = () => {
             setTimeout(() => attachNavEvents(), 100);
           });
         }
-      })
-      .catch((error) => console.error(`Error loading ${url}:`, error));
+      });
   };
 
   loadHTML('header', 'templates/header.html');
