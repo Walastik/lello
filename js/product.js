@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   initializeProductGallery();
   initializeProductAnimations();
-  initializeMobileOptimizations();
+  initializeProductMobileOptimizations();
 });
 
 /* === PRODUCT GALLERY FUNCTIONALITY === */
@@ -13,21 +13,16 @@ function initializeProductGallery() {
 
   if (!mainImage || thumbnails.length === 0) return;
 
-  // Handle thumbnail clicks
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener('click', function () {
-      // Remove active class from all thumbnails
       thumbnails.forEach((thumb) => thumb.classList.remove('active'));
 
-      // Add active class to clicked thumbnail
       this.classList.add('active');
 
-      // Update main image with smooth transition
       const newSrc = this.getAttribute('data-src');
       updateMainImage(mainImage, newSrc);
     });
 
-    // Handle keyboard navigation
     thumbnail.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -59,15 +54,12 @@ function initializeProductGallery() {
 
 /* === SMOOTH IMAGE TRANSITION === */
 function updateMainImage(imgElement, newSrc) {
-  // Create a temporary image to preload
   const tempImg = new Image();
 
   tempImg.onload = function () {
-    // Add fade-out effect
     imgElement.style.opacity = '0.5';
     imgElement.style.transform = 'scale(0.95)';
 
-    // After transition, update source and fade back in
     setTimeout(() => {
       imgElement.src = newSrc;
       imgElement.style.opacity = '1';
@@ -76,17 +68,14 @@ function updateMainImage(imgElement, newSrc) {
   };
 
   tempImg.onerror = function () {
-    // If image fails to load, still update but without transition
     imgElement.src = newSrc;
   };
 
-  // Start loading the image
   tempImg.src = newSrc;
 }
 
 /* === PRODUCT ANIMATIONS === */
 function initializeProductAnimations() {
-  // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
@@ -120,7 +109,7 @@ function initializeProductAnimations() {
 }
 
 /* === MOBILE OPTIMIZATIONS === */
-function initializeMobileOptimizations() {
+function initializeProductMobileOptimizations() {
   // Touch feedback for mobile buttons
   const buttons = document.querySelectorAll('.btn, .thumbnail');
 
@@ -290,8 +279,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* === CSS ANIMATION DEFINITIONS === */
-const style = document.createElement('style');
-style.textContent = `
+const productStyles = document.createElement('style');
+productStyles.textContent = `
     @keyframes ripple {
         to {
             transform: scale(4);
@@ -317,4 +306,4 @@ style.textContent = `
         transform: none !important;
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(productStyles);
