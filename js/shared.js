@@ -4,19 +4,19 @@
 document.addEventListener('DOMContentLoaded', function () {
   // --- Load Header and Footer ---
   loadHeaderFooter();
-  
+
   // --- Initialize Navigation ---
   initializeNavigation();
-  
+
   // --- Add Event Delegation Fallback for Mobile Menu ---
   setupEventDelegation();
-  
+
   // --- Initialize Scroll Animations ---
   initializeScrollAnimations();
-  
+
   // --- Enhanced Mobile Optimizations ---
   initializeMobileOptimizations();
-  
+
   // --- Interactive Elements ---
   initializeInteractiveElements();
 });
@@ -48,51 +48,47 @@ const loadHeaderFooter = () => {
 
 /* === EVENT DELEGATION FOR MOBILE MENU === */
 const setupEventDelegation = () => {
-  // Use event delegation to handle hamburger clicks even if added dynamically
-  document.addEventListener('click', function(e) {
-    // Check if clicked element is hamburger or child of hamburger
-    const hamburgerClick = e.target.matches('.hamburger') || 
-                          e.target.matches('.hamburger *') || 
-                          e.target.closest('.hamburger');
-    
-    if (hamburgerClick) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const hamburger = document.querySelector('.hamburger');
-      const navMenu = document.querySelector('.nav-menu');
-      
-      if (hamburger && navMenu) {
-        console.log('Event delegation: hamburger clicked', hamburger, navMenu); // Debug log
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        console.log('After toggle - hamburger active:', hamburger.classList.contains('active'));
-        console.log('After toggle - navMenu active:', navMenu.classList.contains('active'));
-      } else {
-        console.log('Event delegation: hamburger or navMenu not found', {hamburger, navMenu});
+  document.addEventListener(
+    'click',
+    function (e) {
+      const hamburgerClick =
+        e.target.matches('.hamburger') ||
+        e.target.matches('.hamburger *') ||
+        e.target.closest('.hamburger');
+
+      if (hamburgerClick) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+          hamburger.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        }
       }
-    }
-    
-    // Close menu when nav links are clicked
-    if (e.target.closest('.nav-link')) {
-      const hamburger = document.querySelector('.hamburger');
-      const navMenu = document.querySelector('.nav-menu');
-      
-      if (hamburger && navMenu) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+
+      // Close menu when nav links are clicked
+      if (e.target.closest('.nav-link')) {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
       }
-    }
-  }, true); // Use capture phase
+    },
+    true
+  ); // Use capture phase
 };
 
 /* === NAVIGATION FUNCTIONALITY === */
 const initializeNavigation = () => {
-  // Multiple attempts to ensure navigation is initialized
   const tryAttachNav = (attempts = 0) => {
-    if (attempts > 10) return; // Give up after 10 attempts
-    
+    if (attempts > 10) return;
+
     const hamburger = document.querySelector('.hamburger');
     if (hamburger) {
       attachNavEvents();
@@ -100,7 +96,7 @@ const initializeNavigation = () => {
       setTimeout(() => tryAttachNav(attempts + 1), 100);
     }
   };
-  
+
   tryAttachNav();
 };
 
@@ -108,22 +104,16 @@ const attachNavEvents = () => {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
 
-  // Check if elements exist and haven't been initialized already
   if (hamburger && navMenu && !hamburger.hasAttribute('data-nav-initialized')) {
-    console.log('Attaching navigation events...'); // Debug log
-    
-    // Mark as initialized to prevent duplicate listeners
     hamburger.setAttribute('data-nav-initialized', 'true');
-    
+
     const toggleMenu = () => {
       hamburger.classList.toggle('active');
       navMenu.classList.toggle('active');
-      console.log('Menu toggled, hamburger active:', hamburger.classList.contains('active')); // Debug log
     };
-    
+
     hamburger.addEventListener('click', toggleMenu);
 
-    // Close menu when nav links are clicked
     document.querySelectorAll('.nav-link').forEach((link) =>
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -153,44 +143,57 @@ const attachNavEvents = () => {
 const initializeMobileOptimizations = () => {
   const isMobile = window.innerWidth <= 768;
   const isTouch = 'ontouchstart' in window;
-  
+
   if (isMobile || isTouch) {
-    // Enhanced touch feedback
     document.body.classList.add('touch-device');
-    
-    // Optimize scroll performance
+
     let scrollTimer = null;
-    window.addEventListener('scroll', () => {
-      if (scrollTimer) return;
-      scrollTimer = setTimeout(() => {
-        scrollTimer = null;
-      }, 16); // 60fps throttling
-    }, { passive: true });
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (scrollTimer) return;
+        scrollTimer = setTimeout(() => {
+          scrollTimer = null;
+        }, 16); // 60fps throttling
+      },
+      { passive: true }
+    );
 
-    // Add touch-specific interactions
-    const interactiveElements = document.querySelectorAll('.btn, .card, .dot, .nav-link');
-    
-    interactiveElements.forEach(element => {
-      // Touch feedback with scale animation
-      element.addEventListener('touchstart', (e) => {
-        element.style.transform = 'scale(0.95)';
-        element.style.transition = 'transform 0.1s ease';
-      }, { passive: true });
+    const interactiveElements = document.querySelectorAll(
+      '.btn, .card, .dot, .nav-link'
+    );
 
-      element.addEventListener('touchend', (e) => {
-        setTimeout(() => {
+    interactiveElements.forEach((element) => {
+      element.addEventListener(
+        'touchstart',
+        (e) => {
+          element.style.transform = 'scale(0.95)';
+          element.style.transition = 'transform 0.1s ease';
+        },
+        { passive: true }
+      );
+
+      element.addEventListener(
+        'touchend',
+        (e) => {
+          setTimeout(() => {
+            element.style.transform = '';
+            element.style.transition = '';
+          }, 100);
+        },
+        { passive: true }
+      );
+
+      element.addEventListener(
+        'touchcancel',
+        (e) => {
           element.style.transform = '';
           element.style.transition = '';
-        }, 100);
-      }, { passive: true });
-
-      element.addEventListener('touchcancel', (e) => {
-        element.style.transform = '';
-        element.style.transition = '';
-      }, { passive: true });
+        },
+        { passive: true }
+      );
     });
 
-    // Enhanced viewport detection
     const updateViewport = () => {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -202,11 +205,12 @@ const initializeMobileOptimizations = () => {
       setTimeout(updateViewport, 100);
     });
 
-    // Improve touch scrolling
     document.body.style.WebkitOverflowScrolling = 'touch';
 
     // Performance optimization for animations on mobile
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
     if (prefersReducedMotion.matches) {
       document.documentElement.style.setProperty('--transition-base', '0.01ms');
       document.documentElement.style.setProperty('--transition-fast', '0.01ms');
@@ -217,14 +221,12 @@ const initializeMobileOptimizations = () => {
 
 /* === INTERACTIVE ELEMENTS === */
 const initializeInteractiveElements = () => {
-  // Add ripple effect to buttons
   const buttons = document.querySelectorAll('.btn');
   buttons.forEach((btn) => {
     btn.addEventListener('touchstart', createRipple);
     btn.addEventListener('click', createRipple);
   });
 
-  // Simple navbar enhancement without hiding (throttled)
   const navbar = document.querySelector('.navbar');
   if (navbar) {
     let navbarTicking = false;
@@ -250,10 +252,9 @@ const initializeInteractiveElements = () => {
 
 /* === SCROLL ANIMATIONS === */
 const initializeScrollAnimations = () => {
-  // Basic scroll reveal for all pages
   const scrollElements = document.querySelectorAll('.scroll-reveal');
   if (scrollElements.length === 0) return;
-  
+
   const scrollReveal = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -272,7 +273,6 @@ const initializeScrollAnimations = () => {
     scrollReveal.observe(el);
   });
 
-  // Feature cards animation
   const featureCards = document.querySelectorAll('.card-feature');
   const cardObserver = new IntersectionObserver(
     (entries) => {
@@ -302,9 +302,7 @@ function createRipple(e) {
   const x = e.touches
     ? e.touches[0].clientX - rect.left
     : e.clientX - rect.left;
-  const y = e.touches
-    ? e.touches[0].clientY - rect.top
-    : e.clientY - rect.top;
+  const y = e.touches ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
 
   const ripple = document.createElement('div');
   ripple.style.cssText = `
