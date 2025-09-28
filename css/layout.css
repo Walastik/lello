@@ -342,6 +342,122 @@ footer {
   background-color: var(--secondary);
 }
 
+/* === MEET PENNY PAGE STYLES === */
+
+/* Penny Photo Section */
+.penny-photo-container {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.penny-main-photo {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 15%;
+    box-shadow: var(--shadow-xl);
+    margin: 0 auto;
+    display: block;
+}
+
+/* Penny Content Layout */
+.penny-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-2xl);
+    text-align: left;
+}
+
+.penny-description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Penny Text Styles */
+.penny-hello {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-black);
+    color: var(--primary);
+    margin: 0;
+    line-height: var(--line-height-tight);
+    text-align: left;
+    font-family: var(--font-family-display);
+}
+
+.penny-intro {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+    margin: 0;
+    line-height: var(--line-height-base);
+}
+
+.penny-story,
+.penny-mission {
+    font-size: var(--font-size-lg);
+    color: var(--text-dark);
+    line-height: var(--line-height-loose);
+    margin: 0;
+}
+
+.penny-sign-off {
+    font-size: var(--font-size-lg);
+    color: var(--text-dark);
+    line-height: var(--line-height-loose);
+    margin: 0;
+    font-style: italic;
+    text-align: right;
+    margin-top: var(--space-lg);
+}
+
+/* Penny Page Mobile Responsiveness */
+@media (max-width: 768px) {
+    .penny-main-photo {
+        max-width: 280px;
+    }
+
+    .penny-content {
+        padding: var(--space-lg);
+    }
+
+    .penny-hello {
+        font-size: var(--font-size-xl);
+    }
+
+    .penny-intro {
+        font-size: var(--font-size-lg);
+    }
+
+    .penny-story,
+    .penny-mission,
+    .penny-sign-off {
+        font-size: var(--font-size-base);
+    }
+
+    .hero h1 {
+        font-size: var(--font-size-5xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .penny-main-photo {
+        max-width: 240px;
+    }
+
+    .hero h1 {
+        font-size: var(--font-size-4xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+}
+
 /* === NEW HOME PAGE STYLES === */
 
 /* Hero Section Updates */
@@ -351,6 +467,10 @@ footer {
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   font-weight: var(--font-weight-normal);
+}
+
+.hero-button {
+  margin-top: var(--space-lg);
 }
 
 /* Section Titles */
